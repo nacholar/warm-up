@@ -1,0 +1,26 @@
+{
+  "name": "warm-up",
+  "version": "1.0.0",
+  "description": "Warm up project",
+  "main": "index.js",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "test": "npm run test --workspace=server",
+    "prepare": "husky install",
+    "lint": "npm run lint --workspace=server --workspace=client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/ignacio.larraguibel/warm-up/-/ci/editor"
+  },
+  "author": "Ignacio Larraguibel",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "husky": "^8.0.0"
+  }
+}
