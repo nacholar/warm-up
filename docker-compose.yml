@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile
+    container_name: warm_up_client
+    image: client:latest
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - server
+
+  server:
+    build:
+      context: server
+      dockerfile: Dockerfile
+    container_name: warm_up_server
+    image: server:latest
+    ports: 
+      - "80:3333"
+    depends_on: 
+      - db
+
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - 2222:2222
+    volumes:
+      - ./mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
